@@ -2,8 +2,6 @@ import React from 'react';
 import StartPage from "./components/pages/StartPage/StartPage"
 import SearchCountryPage from "./components/pages/SearchCountryPage/SearchCountryPage"
 import SearchCityPage from "./components/pages/SearchCityPage/SearchCityPage"
-import CountryPage from "./components/pages/CountryPage/CountryPage"
-import CityPage from "./components/pages/CityPage/CityPage"
 import {
   BrowserRouter as Router,
   Switch,
