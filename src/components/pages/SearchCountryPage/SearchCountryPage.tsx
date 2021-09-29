@@ -3,11 +3,10 @@ import { useHistory } from "react-router-dom";
 import useApi from "../../../hooks/useCityPopApi"
 import { CityContext } from "../../../contexts/CityContext"
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
-import CountryPage from "../CountryPage/CountryPage"
 
 const SearchCountryPage = () => {
 
-    const { cities, updateCities } = useContext(CityContext)
+    const { updateCities } = useContext(CityContext)
 
     const [getData] = useApi();
     let history = useHistory()
