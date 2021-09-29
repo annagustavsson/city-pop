@@ -1,26 +1,22 @@
-import React, { useContext } from 'react'
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
 import useApi from "../../../hooks/useCityPopApi"
-import { CityContext } from "../../../contexts/CityContext"
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
+import RenderCities from "../../common/RenderCities/RenderCities"
+import { GeoInfo } from "../../../types/types"
+
+// TODO: make loader appear only after search
 
 const SearchCountryPage = () => {
 
-    const { updateCities } = useContext(CityContext)
+    const [cities, updateCities] = useState<Array<GeoInfo> | null>(null)
+    const [searchTerm, updateSearchTerm] = useState("Sweden")
 
     const [getData] = useApi();
-    let history = useHistory()
 
-    const displayCountryPage = () => {
-        history.push("/country")
-    }
-
-    // TODO flytta logik till hook? och använd för både searchcountry och searchcity
     const searchCountry = async (cityName: String) => {
         try {
             const citiesInfo = await getData(cityName)
             updateCities(citiesInfo)
-            displayCountryPage()
         }
         catch (e: any) {
             throw new Error(e)
@@ -30,7 +26,10 @@ const SearchCountryPage = () => {
     return (
         <div>
             SearchCountryPage
-            <DefaultButton handleClick={() => searchCountry("Sweden")} title="Search API" />
+            <DefaultButton handleClick={() => searchCountry(searchTerm)} title="Search API" />
+            {cities ?
+                <RenderCities cityInfo={cities} searchEntry={searchTerm} />
+                : <div style={{ border: "5px solid purple", padding: "20px" }}>Loader placeholder</div>}
         </div>
     )
 }
