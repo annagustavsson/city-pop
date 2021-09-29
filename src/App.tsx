@@ -21,8 +21,6 @@ function App() {
             <Route path="/" exact render={() => <StartPage />} />
             <Route path="/search-country" exact render={() => <SearchCountryPage />} />
             <Route path="/search-city" exact render={() => <SearchCityPage />} />
-            <Route path="/country" exact render={() => <CountryPage />} />
-            <Route path="/city" exact render={() => <CityPage />} />
           </div>
         </Switch>
       </Router>
