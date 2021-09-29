@@ -5,12 +5,13 @@ import styles from "./renderCities.module.scss"
 
 interface Props {
     cityInfo: Array<GeoInfo>
+    searchEntry?: String,
 }
 
-const RenderCities = ({ cityInfo }: Props) => {
+const RenderCities = ({ cityInfo, searchEntry }: Props) => {
     return (
         <div className={styles.flexContainer}>
-            CityPage
+            {searchEntry && <span>{searchEntry}</span>}
             {cityInfo && cityInfo.map((city, index) =>
                 <Card key={index} name={city.name} population={city.population} countryCode={city.countryCode} />
             )}
