@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CityContext } from "../../../contexts/CityContext"
+import RenderCities from "../../common/RenderCities/RenderCities"
 
-interface Props {
-    
-}
 
-const CityPage = (props: Props) => {
+const CityPage = () => {
+
+    const { cities } = useContext(CityContext)
     return (
         <div>
-            CityPage
+            <RenderCities cityInfo={cities} />
         </div>
     )
 }
