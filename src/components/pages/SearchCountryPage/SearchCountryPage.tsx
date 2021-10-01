@@ -41,7 +41,7 @@ const SearchCountryPage = () => {
     return (
         <div className={styles.searchContainer}>
             <DefaultButton handleClick={() => searchCountry(searchTerm)} title="Search API" />
-            <InputForm label={"Search country"} handleClick={() => console.log("this is just a place holder")} />
+            <InputForm label={"Search country"} handleClick={searchCountry} />
             {cities ?
                 <RenderCities handleClick={handleClick} cityInfo={cities} searchEntry={searchTerm} />
                 : isLoading && <img src={spinner} alt="loading..." />}

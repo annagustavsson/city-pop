@@ -32,7 +32,7 @@ const SearchCityPage = () => {
 
     return (
         <div className={styles.searchContainer}>
-            <InputForm label={"Search city"} handleClick={() => console.log("hello")} />
+            <InputForm label={"Search city"} handleClick={searchCity} />
             <DefaultButton handleClick={() => searchCity(searchTerm)} title="Search API" />
             {cities ?
                 <RenderCities cityInfo={cities} searchEntry={searchTerm} />
