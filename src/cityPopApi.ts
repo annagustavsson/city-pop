@@ -8,7 +8,7 @@ export const getPopulation = async (location: String) => {
 
     // featureCode=PPLA gives cities, featureCode=PPLC gives capital cities
     try {
-        const res = await axios.get(`http://api.geonames.org/searchJSON?q=${location}&orderby=population&featureCode=PPLA&featureCode=PPLC&maxRows=10&username=${userName}`)
+        const res = await axios.get(`http://api.geonames.org/searchJSON?q=${location}&orderby=population&featureCode=PPLA&featureCode=PPLC&maxRows=5&username=${userName}`)
         return res.data
     } catch {
         throw new Error("Api call failed") // find appr. error to throw
