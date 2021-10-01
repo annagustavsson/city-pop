@@ -1,6 +1,7 @@
 import React from 'react'
 import { GeoInfo } from "../../../types/types"
-import Card from "../../common/Card/Card"
+import PopulationCard from "../cards/PopulationCard/PopulationCard"
+import Card from "../cards/Card/Card"
 import styles from "./renderCities.module.scss"
 
 interface Props {
@@ -14,17 +15,15 @@ const RenderCities = ({ cityInfo, searchEntry, handleClick }: Props) => {
 
     return (
         <div className={styles.flexContainer}>
-            {!cityInfo ? <div>no city info:(</div> : <div>we have cityinfo</div>}
-            {searchEntry && <span>{searchEntry}</span>}
-
+            {searchEntry && <span className={styles.heading}>{searchEntry}</span>}
             {cityInfo && cityInfo.map((city, index) =>
 
                 handleClick ?
                     <div onClick={() => handleClick(city)}>
-                        <Card key={index} name={city.name} population={city.population} countryCode={city.countryCode} />
+                        <Card key={index} name={city.name} />
                     </div> :
                     <div>
-                        <Card key={index} name={city.name} population={city.population} countryCode={city.countryCode} />
+                        <PopulationCard key={index} population={city.population} />
                     </div>
             )}
 
