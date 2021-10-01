@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 
 interface Props {
     handleClick: Function
@@ -7,9 +7,9 @@ interface Props {
     route?: String
 }
 
-const DefaultButton = ({handleClick, title, route}: Props) => {
+const DefaultButton = ({ handleClick, title, route }: Props) => {
     return (
-        <Button onClick={route? () => handleClick(route) : () => handleClick()} variant="outlined">{title}</Button>
+        <Button onClick={route ? () => handleClick(route) : () => handleClick()} variant="contained">{title}</Button>
     )
 }
 
