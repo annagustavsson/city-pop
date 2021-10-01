@@ -3,6 +3,8 @@ import useApi from "../../../hooks/useCityPopApi"
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
 import RenderCities from "../../common/RenderCities/RenderCities"
 import { GeoInfo } from "../../../types/types"
+import styles from "./searchCountryPage.module.scss"
+import spinner from "../../../resources/images/spinner.gif"
 
 // TODO: make loader appear only after search
 // TODO: onClick --> display that city
@@ -11,9 +13,12 @@ const SearchCountryPage = () => {
 
     const [cities, updateCities] = useState<Array<GeoInfo> | null>(null)
     const [searchTerm, updateSearchTerm] = useState("Sweden")
+    const [isLoading, setIsLoading] = useState(false);
 
     const [getData] = useApi();
 
+    // TODO: click -> go to citypage history.push("/search-city")
+    // TODO: remove style sheet once form is added
 
     const handleClick = (clickedCity: GeoInfo) => {
         let newCityInfo: GeoInfo[] = [clickedCity]
@@ -21,9 +26,11 @@ const SearchCountryPage = () => {
     }
 
     const searchCountry = async (cityName: String) => {
+        setIsLoading(true)
         try {
             const citiesInfo = await getData(cityName)
             updateCities(citiesInfo)
+            setIsLoading(false)
         }
         catch (e: any) {
             throw new Error(e)
@@ -31,12 +38,11 @@ const SearchCountryPage = () => {
     }
 
     return (
-        <div>
-            SearchCountryPage
+        <div className={styles.searchContainer}>
             <DefaultButton handleClick={() => searchCountry(searchTerm)} title="Search API" />
             {cities ?
                 <RenderCities handleClick={handleClick} cityInfo={cities} searchEntry={searchTerm} />
-                : <div style={{ border: "5px solid purple", padding: "20px" }}>Loader placeholder</div>}
+                : isLoading && <img src={spinner} alt="loading..." />}
         </div>
     )
 }
