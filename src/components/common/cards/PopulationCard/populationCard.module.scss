@@ -1,0 +1,22 @@
+@import "../../../../variables.module.scss";
+
+.card {
+    border: 2px solid $base-blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 8px;
+    flex-direction: column;
+    min-width: 140px;
+    border-radius: 8px;
+}
+
+.text {
+    display: flex;
+    flex-direction: row;
+}
+
+.heading {
+    font-size: 24px;
+}
