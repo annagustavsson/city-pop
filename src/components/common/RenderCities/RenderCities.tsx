@@ -15,8 +15,7 @@ const RenderCities = ({ cityInfo, searchEntry, handleClick }: Props) => {
 
     return (
         <div className={styles.flexContainer}>
-            {searchEntry && <span>{searchEntry}</span>}
-
+            {searchEntry && <span className={styles.heading}>{searchEntry}</span>}
             {cityInfo && cityInfo.map((city, index) =>
 
                 handleClick ?
