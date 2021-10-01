@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import useApi from "../../../hooks/useCityPopApi"
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
+import InputForm from "../../common/InputForm/InputForm";
 import RenderCities from "../../common/RenderCities/RenderCities"
 import { GeoInfo } from "../../../types/types"
 import spinner from "../../../resources/images/spinner.gif"
@@ -31,6 +32,7 @@ const SearchCityPage = () => {
 
     return (
         <div className={styles.searchContainer}>
+            <InputForm label={"Search city"} handleClick={() => console.log("hello")} />
             <DefaultButton handleClick={() => searchCity(searchTerm)} title="Search API" />
             {cities ?
                 <RenderCities cityInfo={cities} searchEntry={searchTerm} />
