@@ -13,7 +13,7 @@ import styles from "./searchCityPage.module.scss"
 const SearchCityPage = () => {
 
     const { cities, updateCities } = useContext(CitySearchContext)
-    const [searchTerm, updateSearchTerm] = useState("London")
+    const [searchTerm, setSearchTerm] = useState("London")
     const [isLoading, setIsLoading] = useState(false);
 
     const [getData] = useApi();
@@ -21,7 +21,7 @@ const SearchCityPage = () => {
 
     const searchCity = async (cityName: string) => {
         setIsLoading(true)
-        updateSearchTerm(cityName)
+        setSearchTerm(cityName)
         try {
             const citiesInfo = await getData(cityName)
             updateCities(citiesInfo)
