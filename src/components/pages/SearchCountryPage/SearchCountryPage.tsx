@@ -29,6 +29,7 @@ const SearchCountryPage = () => {
 
     const searchCountry = async (cityName: string) => {
         setIsLoading(true)
+        setSearchTerm(cityName)
         try {
             const citiesInfo = await getData(cityName)
             updateCities(citiesInfo)
