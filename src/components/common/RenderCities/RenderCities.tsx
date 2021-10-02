@@ -17,7 +17,6 @@ const RenderCities = ({ cityInfo, searchEntry, handleClick }: Props) => {
         <div className={styles.flexContainer}>
             {searchEntry && <span className={styles.heading}>{searchEntry}</span>}
             {cityInfo && cityInfo.map((city, index) =>
-
                 handleClick ?
                     <div key={index} onClick={() => handleClick(city)}>
                         <Card name={city.name} />
@@ -26,7 +25,6 @@ const RenderCities = ({ cityInfo, searchEntry, handleClick }: Props) => {
                         <PopulationCard population={city.population} />
                     </div>
             )}
-
         </div>
     )
 }
