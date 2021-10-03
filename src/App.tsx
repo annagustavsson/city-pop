@@ -1,4 +1,6 @@
 import React from 'react';
+import CountrySearchProvider from "./contexts/CountrySearchContext"
+import CitySearchProvider from "./contexts/CitySearchContext"
 import StartPage from "./components/pages/StartPage/StartPage"
 import JumboTron from "./components/common/JumboTron/JumboTron"
 import SearchCountryPage from "./components/pages/SearchCountryPage/SearchCountryPage"
@@ -12,16 +14,20 @@ import {
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <div>
-          <JumboTron />
-          <Route path="/" exact render={() => <StartPage />} />
-          <Route path="/search-country" exact render={() => <SearchCountryPage />} />
-          <Route path="/search-city" exact render={() => <SearchCityPage />} />
-        </div>
-      </Switch>
-    </Router>
+    <CountrySearchProvider>
+      <CitySearchProvider>
+        <Router>
+          <Switch>
+            <div>
+              <JumboTron />
+              <Route path="/" exact render={() => <StartPage />} />
+              <Route path="/search-country" exact render={() => <SearchCountryPage />} />
+              <Route path="/search-city" exact render={() => <SearchCityPage />} />
+            </div>
+          </Switch>
+        </Router>
+      </CitySearchProvider>
+    </CountrySearchProvider>
   );
 }
 

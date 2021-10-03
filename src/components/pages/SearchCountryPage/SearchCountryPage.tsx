@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import useApi from "../../../hooks/useCityPopApi"
+import { CountrySearchContext } from "../../../contexts/CountrySearchContext"
+import { GeoInfo } from "../../../types/types"
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
 import InputForm from "../../common/InputForm/InputForm";
 import RenderCities from "../../common/RenderCities/RenderCities"
-import { GeoInfo } from "../../../types/types"
-import styles from "./searchCountryPage.module.scss"
 import spinner from "../../../resources/images/spinner.gif"
+import styles from "./searchCountryPage.module.scss"
 
 // TODO: make loader appear only after search
 // TODO: onClick --> display that city
 
 const SearchCountryPage = () => {
 
-    const [cities, updateCities] = useState<Array<GeoInfo> | null>(null)
-    const [searchTerm, updateSearchTerm] = useState("Sweden")
+    const { cities, updateCities } = useContext(CountrySearchContext)
+    const [searchTerm, setSearchTerm] = useState("Sweden")
     const [isLoading, setIsLoading] = useState(false);
 
     const [getData] = useApi();
@@ -26,8 +27,9 @@ const SearchCountryPage = () => {
         updateCities(newCityInfo)
     }
 
-    const searchCountry = async (cityName: String) => {
+    const searchCountry = async (cityName: string) => {
         setIsLoading(true)
+        setSearchTerm(cityName)
         try {
             const citiesInfo = await getData(cityName)
             updateCities(citiesInfo)

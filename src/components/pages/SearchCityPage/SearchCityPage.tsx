@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import useApi from "../../../hooks/useCityPopApi"
+import { CitySearchContext } from "../../../contexts/CitySearchContext"
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
 import InputForm from "../../common/InputForm/InputForm";
 import RenderCities from "../../common/RenderCities/RenderCities"
@@ -11,15 +12,16 @@ import styles from "./searchCityPage.module.scss"
 
 const SearchCityPage = () => {
 
-    const [cities, updateCities] = useState<Array<GeoInfo> | null>(null)
-    const [searchTerm, updateSearchTerm] = useState("London")
+    const { cities, updateCities } = useContext(CitySearchContext)
+    const [searchTerm, setSearchTerm] = useState("London")
     const [isLoading, setIsLoading] = useState(false);
 
     const [getData] = useApi();
 
 
-    const searchCity = async (cityName: String) => {
+    const searchCity = async (cityName: string) => {
         setIsLoading(true)
+        setSearchTerm(cityName)
         try {
             const citiesInfo = await getData(cityName)
             updateCities(citiesInfo)
