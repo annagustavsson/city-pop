@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { GeoInfo } from "../types/types"
 
 interface Values {
-    cities: Array<GeoInfo>,
-    updateCities: Function
+    countrySearchCities: Array<GeoInfo>,
+    countrySearchupdateCities: Function
 }
 
-// ! have to check for null on every use
 export const CountrySearchContext = React.createContext<Values>(null!);
 
 interface Props {
@@ -23,7 +22,7 @@ const CountrySearchProvider: React.FC<Props> = ({ children }) => {
     }
 
     return (
-        <CountrySearchContext.Provider value={{ cities: cities, updateCities: updateCities }}>
+        <CountrySearchContext.Provider value={{ countrySearchCities: cities, countrySearchupdateCities: updateCities }}>
             {children}
         </CountrySearchContext.Provider>
     )

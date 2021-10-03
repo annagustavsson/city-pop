@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { GeoInfo } from "../types/types"
 
 interface Values {
-    cities: Array<GeoInfo>,
-    updateCities: Function
+    citySearchCities: Array<GeoInfo>,
+    citySearchupdateCities: Function,
 }
 
-// ! have to check for null on every use
 export const CitySearchContext = React.createContext<Values>(null!);
 
 interface Props {
@@ -15,15 +14,14 @@ interface Props {
 
 const CitySearchProvider: React.FC<Props> = ({ children }) => {
 
-    //const [cities, setCities] = useState<Array<GeoInfo> | null>(null)
-    const [cities, setCities] = React.useState<GeoInfo[]>([]);
+    const [cities, setCities] = useState<GeoInfo[]>([]);
 
     const updateCities = (cityInfo: GeoInfo[]) => {
         setCities(cityInfo)
     }
 
     return (
-        <CitySearchContext.Provider value={{ cities: cities, updateCities: updateCities }}>
+        <CitySearchContext.Provider value={{ citySearchCities: cities, citySearchupdateCities: updateCities }}>
             {children}
         </CitySearchContext.Provider>
     )
