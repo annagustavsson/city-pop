@@ -14,7 +14,7 @@ export default () => {
     const getData = async (cityName: string) => {
         try {
             result = await getPopulation(cityName)
-            if (result.totalResultsCount == 0) {
+            if (result.totalResultsCount === 0) {
                 return [`No results found for ${cityName}`]
             }
             return result.geonames

@@ -26,7 +26,7 @@ const CountrySearchRender = () => {
 
     return (
         <div className={styles.flexContainer}>
-            {title && <span className={styles.heading}>{title}</span>}
+            {title && <span className={styles.heading}>Showing results for {title}</span>}
             {countrySearchCities && countrySearchCities.map((city, index) =>
                 <div key={index} onClick={() => handleClick(city)}>
                     <Card name={city.name} />
