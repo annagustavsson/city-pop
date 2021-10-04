@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { useLocation, useHistory, useParams } from "react-router-dom";
 //import { BrowserRouter as Router, Route, RouteComponentProps, useHistory } from 'react-router-dom';
 import InputForm from "../InputForm/InputForm"
+import Loader from "../../common/Loader/Loader"
 import useApi from "../../../hooks/useCityPopApi"
 import { CountrySearchContext } from "../../../contexts/CountrySearchContext"
 import { CitySearchContext } from "../../../contexts/CitySearchContext"
@@ -13,7 +14,7 @@ const Search = () => {
     let history = useHistory()
     const { id } = useParams<{ id: string }>();
     const [title, setTitle] = useState("")
-
+    const [isLoading, setIsLoading] = useState(false)
     const { countrySearchCities, countrySearchupdateCities } = useContext(CountrySearchContext)
     const { citySearchCities, citySearchupdateCities } = useContext(CitySearchContext)
 
@@ -34,7 +35,9 @@ const Search = () => {
     }
 
     const handleClick = async (searchTerm: string) => {
+        setIsLoading(true)
         const cities = await search(searchTerm)
+        setIsLoading(false)
         if (title === "country") {
             countrySearchupdateCities(cities)
             history.push("/country")
@@ -48,6 +51,7 @@ const Search = () => {
     return (
         <div>
             <InputForm label={`search ${title}`} handleClick={handleClick} />
+            {isLoading && <Loader />}
         </div>
     )
 }
