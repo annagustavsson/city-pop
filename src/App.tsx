@@ -1,6 +1,6 @@
 import React from 'react';
 import CountrySearchProvider from "./contexts/CountrySearchContext"
-import CitySearchProvider, { CitySearchContext } from "./contexts/CitySearchContext"
+import CitySearchProvider from "./contexts/CitySearchContext"
 import StartPage from "./components/pages/StartPage/StartPage"
 import Search from "./components/pages/Search/Search"
 import JumboTron from "./components/common/JumboTron/JumboTron"
