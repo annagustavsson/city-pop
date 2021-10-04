@@ -12,16 +12,16 @@ const StartPage = (props: Props) => {
     let history = useHistory()
 
     const goToPage = (route: String) => {
-        history.push(`/${route}`)
+        history.push(`/search/${route}`)
     }
 
     return (
         <div className={styles.container}>
             <div className={styles.buttonContainer}>
-                <DefaultButton handleClick={goToPage} title="search country" route={"search-country"} />
+                <DefaultButton handleClick={goToPage} title="search country" route={"country"} />
             </div>
             <div className={styles.buttonContainer}>
-                <DefaultButton handleClick={goToPage} title="search city" route={"search-city"} />
+                <DefaultButton handleClick={goToPage} title="search city" route={"city"} />
             </div>
 
         </div>
