@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams, useHistory } from "react-router-dom";
 import { GeoInfo } from "../../../types/types"
-import Card from "../cards/Card/Card"
+import Card from "../../common/cards/Card/Card"
 import styles from "./countrySearchRender.module.scss"
 import { CitySearchContext } from "../../../contexts/CitySearchContext"
 import { CountrySearchContext } from "../../../contexts/CountrySearchContext"

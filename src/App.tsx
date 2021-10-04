@@ -2,10 +2,10 @@ import React from 'react';
 import CountrySearchProvider from "./contexts/CountrySearchContext"
 import CitySearchProvider, { CitySearchContext } from "./contexts/CitySearchContext"
 import StartPage from "./components/pages/StartPage/StartPage"
-import Search from "./components/common/Search/Search"
+import Search from "./components/pages/Search/Search"
 import JumboTron from "./components/common/JumboTron/JumboTron"
-import CitySearchRender from "./components/common/CitySearchRender/CitySearchRender"
-import CountrySearchRender from "./components/common/CountrySearchRender/CountrySearchRender"
+import CitySearchRender from "./components/pages/CitySearchRender/CitySearchRender"
+import CountrySearchRender from "./components/pages/CountrySearchRender/CountrySearchRender"
 import {
   BrowserRouter as Router,
   Switch,

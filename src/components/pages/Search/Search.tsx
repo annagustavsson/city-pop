@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from "react-router-dom";
-import InputForm from "../InputForm/InputForm"
+import InputForm from "../../common/InputForm/InputForm"
 import Loader from "../../common/Loader/Loader"
 import useApi from "../../../hooks/useCityPopApi"
 import { CountrySearchContext } from "../../../contexts/CountrySearchContext"
