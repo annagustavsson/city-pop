@@ -16,7 +16,7 @@ const CitySearchRender = () => {
 
     return (
         <div className={styles.flexContainer}>
-            {title && <span className={styles.heading}>{title}</span>}
+            {title && <span className={styles.heading}>Showing results for {title}</span>}
             {citySearchCities && citySearchCities.map((city, index) =>
                 <div key={index}>
                     <PopulationCard population={city.population} />
