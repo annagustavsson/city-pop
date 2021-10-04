@@ -1,14 +1,13 @@
 import React from 'react'
 import styles from "./populationCard.module.scss"
 
+// component for displaying city population
 interface Props {
     name?: String,
     population?: Number,
     countryCode?: String
     citySearch?: Boolean,
 }
-
-// TODO: if population och countryCode är undefined, ha en annan styling med namnet i mitten
 
 const PopulationCard = ({ name, population, countryCode }: Props) => {
     return (

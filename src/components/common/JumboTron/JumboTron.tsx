@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import logo from "../../../resources/images/citypop-logo.png"
 import styles from "./jumboTron.module.scss"
 
+// component that displays a cityPop app logo and title
 
 const JumboTron = () => {
 

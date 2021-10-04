@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from "react-router-dom";
-import PopulationCard from "../cards/PopulationCard/PopulationCard"
+import PopulationCard from "../../common/cards/PopulationCard/PopulationCard"
 import styles from "./citySearchRender.module.scss"
 import { CitySearchContext } from "../../../contexts/CitySearchContext"
+
+// Renders data generated from search on city
 
 const CitySearchRender = () => {
 
@@ -11,6 +13,7 @@ const CitySearchRender = () => {
     const [title, setTitle] = useState("")
 
     useEffect(() => {
+        // match the param in url to know the searchterm
         setTitle(id)
     }, [])
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from "react-router-dom";
-import InputForm from "../InputForm/InputForm"
+import InputForm from "../../common/InputForm/InputForm"
 import Loader from "../../common/Loader/Loader"
 import useApi from "../../../hooks/useCityPopApi"
 import { CountrySearchContext } from "../../../contexts/CountrySearchContext"
@@ -21,11 +21,12 @@ const Search = () => {
     const { citySearchupdateCities } = useContext(CitySearchContext)
 
     useEffect(() => {
-        console.log("this is id:", id)
+        // uses the url param to know if it's on search country or search city page
         setTitle(id)
     }, [heading])
 
     const search = async (cityName: string) => {
+        // calls the api hook
         try {
             const citiesInfo = await getData(cityName)
             return citiesInfo
@@ -36,12 +37,13 @@ const Search = () => {
     }
 
     const handleTextChange = (e: any) => {
+        // changes the value in input form field
         const search = e.target.value;
         setTextValue(search)
     }
 
     const handleClick = async (searchTerm: string) => {
-        console.log("handle click")
+        // handles press on submit in input field
 
         setIsLoading(true)
         const cities = await search(searchTerm)
