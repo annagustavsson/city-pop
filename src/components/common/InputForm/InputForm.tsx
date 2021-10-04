@@ -15,6 +15,8 @@ export const InputForm = ({ label, handleClick, isCleared }: Props) => {
     useEffect(() => {
         if (textValue !== "") {
             setVisible(true)
+        } else {
+            setVisible(false)
         }
     }, [textValue])
 
