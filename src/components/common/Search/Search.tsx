@@ -1,34 +1,30 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, useParams } from "react-router-dom";
+//import { BrowserRouter as Router, Route, RouteComponentProps, useHistory } from 'react-router-dom';
 import InputForm from "../InputForm/InputForm"
 
-interface Props {
 
-}
-
-const Search = (props: Props) => {
+const Search = () => {
 
     let history = useHistory()
-    const pathName = location.pathname
+    const { id } = useParams<{ id: string }>();
     const [title, setTitle] = useState("")
+
 
     useEffect(() => {
         // TODO: kan jag göra typ location.pathname och direkt få ut slutnamnet? dvs /country, ellr /city
-        if (pathName === "/search/country") {
-            setTitle("Country")
-        }
-        else {
-            setTitle("Country")
-        }
+        console.log("this is id:", id)
+        setTitle(id)
     }, [])
 
-
     const handleClick = () => {
-        if (pathName === "/search/country") {
+        if (title === "country") {
+            // call api
             // set country context
             history.push("/country")
         }
         else {
+            // call api
             // set city context
             history.push("/city")
         }
@@ -36,7 +32,7 @@ const Search = (props: Props) => {
 
     return (
         <div>
-            <InputForm label={title} handleClick={handleClick} />
+            <InputForm label={`search ${title}`} handleClick={handleClick} />
         </div>
     )
 }
