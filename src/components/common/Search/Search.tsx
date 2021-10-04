@@ -5,6 +5,7 @@ import Loader from "../../common/Loader/Loader"
 import useApi from "../../../hooks/useCityPopApi"
 import { CountrySearchContext } from "../../../contexts/CountrySearchContext"
 import { CitySearchContext } from "../../../contexts/CitySearchContext"
+import styles from "./search.module.scss"
 
 
 const Search = () => {
@@ -47,9 +48,9 @@ const Search = () => {
     }
 
     return (
-        <div>
+        <div className={styles.flexContainer}>
             <InputForm label={`search ${title}`} handleClick={handleClick} />
-            {isLoading && <Loader />}
+            <div>{isLoading && <Loader />}</div>
         </div>
     )
 }
