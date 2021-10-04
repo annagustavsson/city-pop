@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
+import styles from "./inputForm.module.scss"
 
 interface Props {
     label: String,
@@ -8,8 +9,6 @@ interface Props {
 
 export const InputForm = ({ label, handleClick }: Props) => {
     const [textValue, setTextValue] = useState<string>("");
-
-    // TODO prevent default
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -22,7 +21,7 @@ export const InputForm = ({ label, handleClick }: Props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} noValidate autoComplete="off">
+        <form className={styles.formContainer} onSubmit={handleSubmit} noValidate autoComplete="off">
             <TextField
                 id="outlined-basic"
                 label={label}
@@ -30,7 +29,7 @@ export const InputForm = ({ label, handleClick }: Props) => {
                 value={textValue}
                 onChange={handleChange}
             />
-            <input type="submit" value="Search" />
+            <input className={styles.inputButton} type="submit" value="Search" />
         </form>
     );
 };

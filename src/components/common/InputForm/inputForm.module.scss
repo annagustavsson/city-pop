@@ -1,0 +1,19 @@
+@import "../../../variables.module.scss";
+
+
+.formContainer {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-content: center;
+}
+
+.inputButton {
+    border: 0.2px solid rgba($base-blue, 0.7);
+    background-color: white;
+    color: $base-blue;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 10px 15px 10px 15px;
+}
