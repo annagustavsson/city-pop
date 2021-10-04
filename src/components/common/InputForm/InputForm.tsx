@@ -3,13 +3,15 @@ import { TextField } from "@mui/material";
 import styles from "./inputForm.module.scss"
 
 interface Props {
-    label: String,
+    label: string,
     handleClick: Function,
-    isCleared: Boolean,
+    textValue: string,
+    handleTextChange: Function
 }
 
-export const InputForm = ({ label, handleClick, isCleared }: Props) => {
-    const [textValue, setTextValue] = useState<string>("");
+
+export const InputForm = ({ label, handleClick, textValue, handleTextChange, }: Props) => {
+    // const [textValue, setTextValue] = useState<string>("");
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
@@ -20,14 +22,13 @@ export const InputForm = ({ label, handleClick, isCleared }: Props) => {
         }
     }, [textValue])
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         handleClick(textValue)
     }
 
     const handleChange = (e: any) => {
-        const search = e.target.value;
-        setTextValue(search)
+        handleTextChange(e)
     }
 
     return (
@@ -36,7 +37,7 @@ export const InputForm = ({ label, handleClick, isCleared }: Props) => {
                 id="outlined-basic"
                 label={label}
                 variant="outlined"
-                value={isCleared ? "" : textValue}
+                value={textValue}
                 onChange={handleChange}
             />
             {visible && <input className={styles.inputButton} type="submit" value="Search" />}

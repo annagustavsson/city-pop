@@ -16,7 +16,7 @@ const Search = () => {
     const [title, setTitle] = useState("")
     const [heading, setHeading] = useState("")
     const [isLoading, setIsLoading] = useState(false)
-    const [isCleared, setIsCleared] = useState(false)
+    const [textValue, setTextValue] = useState("")
     const { countrySearchupdateCities } = useContext(CountrySearchContext)
     const { citySearchupdateCities } = useContext(CitySearchContext)
 
@@ -35,7 +35,14 @@ const Search = () => {
         }
     }
 
+    const handleTextChange = (e: any) => {
+        const search = e.target.value;
+        setTextValue(search)
+    }
+
     const handleClick = async (searchTerm: string) => {
+        console.log("handle click")
+
         setIsLoading(true)
         const cities = await search(searchTerm)
         setIsLoading(false)
@@ -43,7 +50,7 @@ const Search = () => {
         // if type string, we have no results
         if (typeof cities[0] === 'string') {
             setHeading(cities[0])
-            setIsCleared(true)
+            setTextValue("")
         } else {
             if (title === "country") {
                 countrySearchupdateCities(cities)
@@ -59,7 +66,7 @@ const Search = () => {
     return (
         <div className={styles.flexContainer}>
             <div className={styles.heading}>{heading}</div>
-            <InputForm isCleared={isCleared} label={`search ${title}`} handleClick={handleClick} />
+            <InputForm label={`search ${title}`} handleClick={handleClick} textValue={textValue} handleTextChange={handleTextChange} />
             <div>{isLoading && <Loader />}</div>
         </div>
     )
