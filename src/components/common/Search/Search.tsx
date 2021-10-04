@@ -50,7 +50,7 @@ const Search = () => {
     return (
         <div className={styles.flexContainer}>
             <InputForm label={`search ${title}`} handleClick={handleClick} />
-            {isLoading && <Loader />}
+            <div>{isLoading && <Loader />}</div>
         </div>
     )
 }
