@@ -14,14 +14,16 @@ const Search = () => {
     let history = useHistory()
     const { id } = useParams<{ id: string }>();
     const [title, setTitle] = useState("")
+    const [heading, setHeading] = useState("")
     const [isLoading, setIsLoading] = useState(false)
+    const [isCleared, setIsCleared] = useState(false)
     const { countrySearchupdateCities } = useContext(CountrySearchContext)
     const { citySearchupdateCities } = useContext(CitySearchContext)
 
     useEffect(() => {
         console.log("this is id:", id)
         setTitle(id)
-    }, [])
+    }, [heading])
 
     const search = async (cityName: string) => {
         try {
@@ -37,19 +39,27 @@ const Search = () => {
         setIsLoading(true)
         const cities = await search(searchTerm)
         setIsLoading(false)
-        if (title === "country") {
-            countrySearchupdateCities(cities)
-            history.push(`/${title}/${searchTerm}`)
-        }
-        else {
-            citySearchupdateCities(cities)
-            history.push(`/${title}/${searchTerm}`)
-        }
-    }
 
+        // if type string, we have no results
+        if (typeof cities[0] === 'string') {
+            setHeading(cities[0])
+            setIsCleared(true)
+        } else {
+            if (title === "country") {
+                countrySearchupdateCities(cities)
+                history.push(`/${title}/${searchTerm}`)
+            }
+            else {
+                citySearchupdateCities(cities)
+                history.push(`/${title}/${searchTerm}`)
+            }
+        }
+
+    }
     return (
         <div className={styles.flexContainer}>
-            <InputForm label={`search ${title}`} handleClick={handleClick} />
+            <div className={styles.heading}>{heading}</div>
+            <InputForm isCleared={isCleared} label={`search ${title}`} handleClick={handleClick} />
             <div>{isLoading && <Loader />}</div>
         </div>
     )
