@@ -3,15 +3,13 @@ import { useHistory } from "react-router-dom";
 import DefaultButton from "../../common/DefaultButton/DefaultButton"
 import styles from "./startPage.module.scss"
 
-interface Props {
-
-}
-
-const StartPage = (props: Props) => {
+// The start page of the application
+const StartPage = () => {
 
     let history = useHistory()
 
     const goToPage = (route: String) => {
+        // go to given route on button click
         history.push(`/search/${route}`)
     }
 

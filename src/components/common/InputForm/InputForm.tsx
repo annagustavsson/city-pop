@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import styles from "./inputForm.module.scss"
 
+// input form for taking in a value on submit
+
 interface Props {
     label: string,
     handleClick: Function,
@@ -11,7 +13,6 @@ interface Props {
 
 
 export const InputForm = ({ label, handleClick, textValue, handleTextChange, }: Props) => {
-    // const [textValue, setTextValue] = useState<string>("");
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {

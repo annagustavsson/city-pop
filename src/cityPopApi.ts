@@ -1,5 +1,7 @@
 import axios from "axios"
 
+// calls the secure version of http://www.geonames.org/export/geonames-search.html
+
 export const getPopulation = async (location: String) => {
     const userName = process.env.REACT_APP_API_USERNAME
     // featureCode=PPLA gives cities, featureCode=PPLC gives capital cities

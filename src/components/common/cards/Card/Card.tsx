@@ -1,7 +1,7 @@
 import React from 'react'
-import { cardActionAreaClasses } from '@mui/material'
 import styles from "./card.module.scss"
 
+// component for displaying a basic card
 interface Props {
     name: String,
 }

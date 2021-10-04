@@ -6,6 +6,8 @@ import styles from "./countrySearchRender.module.scss"
 import { CitySearchContext } from "../../../contexts/CitySearchContext"
 import { CountrySearchContext } from "../../../contexts/CountrySearchContext"
 
+// Renders data generated from search on country
+
 const CountrySearchRender = () => {
 
     const { id } = useParams<{ id: string }>();
@@ -15,10 +17,12 @@ const CountrySearchRender = () => {
     const [title, setTitle] = useState("")
 
     useEffect(() => {
+        // match the param in url to know the searchterm
         setTitle(id)
     }, [])
 
     const handleClick = (city: GeoInfo) => {
+        // make CitySearchRender render the data from clicked card
         citySearchupdateCities([city])
         const name = city.name
         history.push(`/city/${name.toLowerCase()}`)
