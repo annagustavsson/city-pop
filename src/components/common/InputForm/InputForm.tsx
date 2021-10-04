@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import styles from "./inputForm.module.scss"
 
@@ -9,6 +9,13 @@ interface Props {
 
 export const InputForm = ({ label, handleClick }: Props) => {
     const [textValue, setTextValue] = useState<string>("");
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        if (textValue !== "") {
+            setVisible(true)
+        }
+    }, [textValue])
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
@@ -29,7 +36,7 @@ export const InputForm = ({ label, handleClick }: Props) => {
                 value={textValue}
                 onChange={handleChange}
             />
-            <input className={styles.inputButton} type="submit" value="Search" />
+            {visible && <input className={styles.inputButton} type="submit" value="Search" />}
         </form>
     );
 };

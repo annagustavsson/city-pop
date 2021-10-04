@@ -19,13 +19,13 @@ function App() {
       <CitySearchProvider>
         <Router>
           <Switch>
-            <div>
+            <>
               <JumboTron />
               <Route path="/" exact render={() => <StartPage />} />
               <Route path="/city/:id" exact render={() => <CitySearchRender />} />
               <Route path="/country/:id" exact render={() => <CountrySearchRender />} />
               <Route path="/search/:id" exact render={() => <Search />} />
-            </div>
+            </>
           </Switch>
         </Router>
       </CitySearchProvider>
