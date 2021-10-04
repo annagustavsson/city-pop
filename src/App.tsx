@@ -1,10 +1,13 @@
 import React from 'react';
 import CountrySearchProvider from "./contexts/CountrySearchContext"
-import CitySearchProvider from "./contexts/CitySearchContext"
+import CitySearchProvider, { CitySearchContext } from "./contexts/CitySearchContext"
 import StartPage from "./components/pages/StartPage/StartPage"
+import Search from "./components/common/Search/Search"
 import JumboTron from "./components/common/JumboTron/JumboTron"
 import SearchCountryPage from "./components/pages/SearchCountryPage/SearchCountryPage"
 import SearchCityPage from "./components/pages/SearchCityPage/SearchCityPage"
+import CitySearchRender from "./components/common/CitySearchRender/CitySearchRender"
+import CountrySearchRender from "./components/common/CountrySearchRender/CountrySearchRender"
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,8 +24,9 @@ function App() {
             <div>
               <JumboTron />
               <Route path="/" exact render={() => <StartPage />} />
-              <Route path="/search-country" exact render={() => <SearchCountryPage />} />
-              <Route path="/search-city" exact render={() => <SearchCityPage />} />
+              <Route path="/city/:id" exact render={() => <CitySearchRender />} />
+              <Route path="/country/:id" exact render={() => <CountrySearchRender />} />
+              <Route path="/search/:id" exact render={() => <Search />} />
             </div>
           </Switch>
         </Router>
