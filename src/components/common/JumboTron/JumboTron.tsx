@@ -16,7 +16,7 @@ const JumboTron = () => {
         <div className={styles.jumbotron}>
             <div className={styles.flexContainer}>
                 <div onClick={handleClick} className={styles.logoContainer}>
-                    <img src={logo}></img>
+                    <img src={logo} alt="loading..."></img>
                     <span className={styles.heading}>CityPop</span>
                 </div>
             </div>
