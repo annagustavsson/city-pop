@@ -5,9 +5,10 @@ import styles from "./inputForm.module.scss"
 interface Props {
     label: String,
     handleClick: Function,
+    isCleared: Boolean,
 }
 
-export const InputForm = ({ label, handleClick }: Props) => {
+export const InputForm = ({ label, handleClick, isCleared }: Props) => {
     const [textValue, setTextValue] = useState<string>("");
     const [visible, setVisible] = useState(false);
 
@@ -33,7 +34,7 @@ export const InputForm = ({ label, handleClick }: Props) => {
                 id="outlined-basic"
                 label={label}
                 variant="outlined"
-                value={textValue}
+                value={isCleared ? "" : textValue}
                 onChange={handleChange}
             />
             {visible && <input className={styles.inputButton} type="submit" value="Search" />}
