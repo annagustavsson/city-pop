@@ -22,7 +22,7 @@ export const InputForm = ({ label, handleClick }: Props) => {
 
     return (
         <form className={styles.formContainer} onSubmit={handleSubmit} noValidate autoComplete="off">
-            <TextField
+            <TextField className={styles.textField}
                 id="outlined-basic"
                 label={label}
                 variant="outlined"
