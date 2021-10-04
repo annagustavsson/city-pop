@@ -4,8 +4,6 @@ import CitySearchProvider, { CitySearchContext } from "./contexts/CitySearchCont
 import StartPage from "./components/pages/StartPage/StartPage"
 import Search from "./components/common/Search/Search"
 import JumboTron from "./components/common/JumboTron/JumboTron"
-import SearchCountryPage from "./components/pages/SearchCountryPage/SearchCountryPage"
-import SearchCityPage from "./components/pages/SearchCityPage/SearchCityPage"
 import CitySearchRender from "./components/common/CitySearchRender/CitySearchRender"
 import CountrySearchRender from "./components/common/CountrySearchRender/CountrySearchRender"
 import {
