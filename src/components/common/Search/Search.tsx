@@ -38,11 +38,11 @@ const Search = () => {
         setIsLoading(false)
         if (title === "country") {
             countrySearchupdateCities(cities)
-            history.push(`/${title}`)
+            history.push(`/${title}/${searchTerm}`)
         }
         else {
             citySearchupdateCities(cities)
-            history.push(`/${title}`)
+            history.push(`/${title}/${searchTerm}`)
         }
     }
 
