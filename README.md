@@ -7,7 +7,7 @@ The app can be found at https://annas-citypop.web.app/
 ## API
 This application uses the secure version (https://secure.geonames.org/) of GeoNames API, see documentation http://www.geonames.org/export/geonames-search.html
 
-## Api credentials
+## API credentials
 Create an *.env* file in root directory with username credentials for the API. See *.env.example* for example. 
 Link to API: http://www.geonames.org/export/geonames-search.html
 
