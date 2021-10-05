@@ -1,4 +1,4 @@
-# City Pop
+# 🌍🏘 City Pop 🏘🌏
 
 This project is an app for learning more about city populations in different countries and cities!
 
